@@ -19,6 +19,12 @@ app.post('/square', (req, res) => {
   if (!number || isNaN(number)) {
     return res.status(400).send('유효한 숫자를 입력해주세요.');
   }
+
+  // Check if the number is 0 or negative
+  if (number <= 0) {
+    return res.status(400).send('0 또는 음수는 입력할 수 없습니다.');
+  }  
+
   const squaredNumber = number * number;
   res.send(`입력된 숫자의 제곱은 ${squaredNumber}입니다.`);
 });
